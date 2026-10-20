@@ -231,3 +231,62 @@ data
 ```{r}
 save(data, file='data/results/iris.RData')
 ```
+
+## Inspección de los datos
+
+```{r}
+str(data)
+```
+
+```{r}
+head(data)
+```
+
+```{r}
+tail(data)
+```
+
+```{r}
+summary(data)
+```
+
+# Fichero JSON *FileCodificado.json*
+
+## 7.2 Importar el fichero `FileCodificado.json`
+
+### 1. y 2.
+
+```{r}
+library(jsonlite)
+json<-read_json('data/FileCodificado.json', simplifyVector = TRUE)
+
+
+```
+
+### 3
+
+```{r}
+save(json, file='data/results/FileCodificado.RData')
+```
+
+## Inspección de los datos
+
+```{r}
+dim(json)
+```
+
+```{r}
+str(json)
+```
+
+```{r}
+head(json)
+```
+
+```{r}
+tail(json)
+```
+
+```{r}
+summary(json)
+```
