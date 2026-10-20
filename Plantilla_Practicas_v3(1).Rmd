@@ -3,25 +3,25 @@ title: "Práctica 1. Importación de Datos"
 author: "Daniel Arenas Gracia"
 date: "`r Sys.Date()`"
 output:
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
   bookdown::pdf_document2:
     toc: true
     toc_depth: 3
     number_sections: true
     figure_caption: "Figura" # Referencias en castellano
     table_caption: "Tabla"
+  html_notebook:
+    echo: true
+    number_sections: true
+    toc: true
   html_document:
     echo: true
     number_sections: true
     theme: lumen
     toc: true
-  html_notebook:
-    echo: true
-    number_sections: true
-    toc: true
-  pdf_document:
-    toc: true
-    toc_depth: 3
-    number_sections: true
   bookdown::html_document2:
     echo: true
     number_sections: true
@@ -290,3 +290,69 @@ tail(json)
 ```{r}
 summary(json)
 ```
+
+# Fichero JSON *iris_json.json*
+
+## Importar el fichero `iris_json.json`
+
+### 2.
+
+```{r}
+irisjson<- read_json('data/iris_json.json',simplifyVector = T)
+irisjson
+```
+
+### 3.
+
+```{r}
+irisjson2<- fromJSON('data/iris_json.json')
+irisjson2
+```
+
+La diferencia principal es que la función 'FromJson' ya tiene por defecto el simplifyvector=T
+
+### 4.
+
+```{r}
+save(irisjson, file='data/results/iris_json.RData')
+```
+
+## Inspección de los datos
+
+```{r}
+str(irisjson)
+```
+
+```{r}
+head(irisjson)
+```
+
+```{r}
+tail(irisjson)
+```
+
+```{r}
+summary(irisjson)
+```
+
+## exportar datos en formato JSON
+
+### 1.
+
+```{r}
+load('data/results/iris.RData')
+write_json(data, 'data/results/iris_export.json')
+```
+
+### 2.
+
+```{r}
+json_sinpretty<-toJSON(data, pretty=FALSE)
+write_file(json_sinpretty, file='data/results/iris_sinpretty.json')
+json_conpretty<-toJSON(data, pretty=TRUE)
+write_file(json_conpretty, file='data/results/iris_conpretty.json')
+
+
+```
+
+El comando pretty lo que hace es que te lo pone de forma estructurada 'hacia abajo', si no lo ponemos, nos pone toda la información en la primera fila.
