@@ -199,3 +199,35 @@ tail(PsychBike)
 ```{r}
 summary(PsychBike)
 ```
+
+# Fichero data *iris.zip*
+
+## Descomprimir el archivo
+
+```{r}
+unzip(zipfile='data/iris.zip', exdir='data/')
+```
+
+# Fichero data iris.data
+
+## Importación del fichero
+
+### 1.
+
+```{r}
+data<- read.table('data/iris.data', sep=',')
+data
+```
+
+### 2.
+
+```{r}
+colnames(data)<- c('sepal_length', 'sepal_width', 'petal_length', 'petal_width', 'class')
+data
+```
+
+### 3.
+
+```{r}
+save(data, file='data/results/iris.RData')
+```
