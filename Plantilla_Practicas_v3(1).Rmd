@@ -1,0 +1,148 @@
+---
+title: "Práctica 1. Importación de Datos"
+author: "Daniel Arenas Gracia"
+date: "`r Sys.Date()`"
+output:
+  bookdown::pdf_document2:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+    figure_caption: "Figura" # Referencias en castellano
+    table_caption: "Tabla"
+  html_document:
+    echo: true
+    number_sections: true
+    theme: lumen
+    toc: true
+  html_notebook:
+    echo: true
+    number_sections: true
+    toc: true
+  pdf_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+  bookdown::html_document2:
+    echo: true
+    number_sections: true
+    theme: spacelab
+    toc: true
+    figure_caption: "Figura"
+    table_caption: "Tabla"
+always_allow_html: true
+params:
+  lang: ES
+lang: "`r switch(params$lang, ES = 'es-ES', EN = 'en-US')`"
+subtitle: "Introducción a la Ciencia de Datos. Máster en Ciencia de Datos- UV"
+language:
+  label:
+    fig: 'Figura '
+    tab: 'Tabla '
+    eq: 'Ecuación '
+    thm: 'Teorema '
+    lem: 'Lema '
+    def: 'Definición '
+    cor: 'Corolario '
+    prp: 'Proposición '
+    exm: 'Ejemplo '
+    exr: 'Ejercicio '
+    proof: 'Demostración. '
+    remark: 'Nota: '
+    solution: 'Solución. '
+---
+
+# Fichero *DFP1_11122015 124700.csv*
+
+## Importación del fichero
+
+### 1. Usar la herramienta de importación para previsualizar el resultado final. Compara las opciones *base* y *readr*.
+
+```{r}
+#Import dataset->from text (base)/(readr)-
+
+
+
+# read r, usamos read_delim para que podamos incluir el delim
+
+library(readr)
+DF1 <- read_delim("data/DFP1_11122015 124700.csv",delim='\t')
+View(DF1)
+
+
+
+#base
+
+DF2<- read.csv("data/DFP1_11122015 124700.csv", sep='\t')
+View(DF2)
+
+
+```
+
+La diferencia es que en readr podemos previsualizar el tipo de variable.
+
+### 2. Leer el fichero con `read.csv` y el parámetro
+
+`stringsAsFactors=F`.
+
+```{r}
+DF<- read.csv("data/DFP1_11122015 124700.csv", stringsAsFactors = F,sep='\t')
+View(DF)
+```
+
+### 3. Convertir fecha y hora con [`as.POSIXlt`](http://rdrr.io/r/base/as.POSIXlt.html)y [`as.hms`(`hms` library)](https://cran.r-project.org/web/packages/hms/refman/hms.html).
+
+```{r}
+library(hms)
+DF$FECHA<- as.POSIXlt(DF$FECHA)
+DF$HORA<- as.hms(DF$HORA)
+
+
+
+```
+
+### 4.Almacenar con `save` en una carpeta con nombre results dentro de la carpeta data.
+
+```{r}
+
+save(DF, file='data/results/DFP1.RData')
+
+```
+
+## Inspección de los datos
+
+Inspecciona los datos con `str`, `head`, `tail` y `summary`. Describid que informacion os proporciona cada uno de ellos.
+
+```{r}
+str(DF)
+
+```
+
+Muestra la estructura de las variables y el tipo de los datos.
+
+```{r}
+head(DF)
+```
+
+Muestra las primeras 6 filas.
+
+```{r}
+tail(DF)
+```
+
+Muestra las últimas 6 filas.
+
+```{r}
+summary(DF)
+
+```
+
+Nos da estadísticas descriptivas como los cuartiles, media, mediana,etc.
+
+# Fichero *Transactions from a Bakery* (Kaggle)
+
+## Importación del fichero
+
+```{r}
+
+
+```
