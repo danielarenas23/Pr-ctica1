@@ -142,7 +142,15 @@ Nos da estadísticas descriptivas como los cuartiles, media, mediana,etc.
 
 ## Importación del fichero
 
+Otra opción es usar la librería readr para especificar directamente el tipo de datos.
+Utiliza Import Dataset de RStudio, opción readr, para previsualizar el fichero y especificar los tipos de datos.Copia el código resultante y comprueba la lectura de datos. Guarda el data frame con save en la carpeta results.
+
+
+
+
 ```{r}
-
-
+library(readr)
+bakery_sales_revised <- read_csv("data/bakery_sales_revised.csv")
+View(bakery_sales_revised)
+save(bakery_sales_revised, file='data/results/Bakery.RData')
 ```
