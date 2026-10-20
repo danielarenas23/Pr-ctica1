@@ -142,15 +142,60 @@ Nos da estadísticas descriptivas como los cuartiles, media, mediana,etc.
 
 ## Importación del fichero
 
-Otra opción es usar la librería readr para especificar directamente el tipo de datos.
-Utiliza Import Dataset de RStudio, opción readr, para previsualizar el fichero y especificar los tipos de datos.Copia el código resultante y comprueba la lectura de datos. Guarda el data frame con save en la carpeta results.
-
-
-
+Otra opción es usar la librería readr para especificar directamente el tipo de datos. Utiliza Import Dataset de RStudio, opción readr, para previsualizar el fichero y especificar los tipos de datos.Copia el código resultante y comprueba la lectura de datos. Guarda el data frame con save en la carpeta results.
 
 ```{r}
 library(readr)
 bakery_sales_revised <- read_csv("data/bakery_sales_revised.csv")
 View(bakery_sales_revised)
 save(bakery_sales_revised, file='data/results/Bakery.RData')
+```
+
+## Inspección de los datos
+
+```{r}
+summary(bakery_sales_revised)
+
+
+```
+
+```{r}
+head(bakery_sales_revised)
+```
+
+```{r}
+
+str(bakery_sales_revised)
+
+```
+
+```{r}
+tail(bakery_sales_revised)
+```
+
+# Fichero SPSS *PsychBike.sav*
+
+## Importación del fichero
+
+```{r}
+library(haven)
+PsychBike<-read_sav('data/PsychBike.sav')
+```
+
+## Inspección de los datos
+
+```{r}
+str(PsychBike)
+```
+
+```{r}
+head(PsychBike)
+```
+
+```{r}
+tail(PsychBike)
+```
+
+```{r}
+summary(PsychBike)
 ```
